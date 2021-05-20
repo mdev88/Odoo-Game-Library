@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!--  Tree View  -->
+    <record id="games_tree" model="ir.ui.view">
+        <field name="name">game.model.tree</field>
+        <field name="model">game.model</field>
+        <field name="arch" type="xml">
+            <tree string="Games Tree">
+                <field name="cover" widget="image" height="150" width="75"/>
+                <field name="name" />
+                <field name="genre" />
+                <field name="year" />
+                <field name="completed" />
+            </tree>
+        </field>
+    </record>
+
+    <!--  Form View  -->
+    <record id="games_form" model="ir.ui.view">
+        <field name="name">game.model.form</field>
+        <field name="model">game.model</field>
+        <field name="arch" type="xml">
+            <form string="Games Form">
+                <sheet>
+                    <group>
+                        <group><field name="name" /></group>
+                        <group><field name="cover" /></group>
+                    </group>
+                    <group>
+                        <field name="year" />
+                        <field name="genre" />
+                        <field name="completed" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Ection of the Menu Entry -->
+    <record id="action_main" model="ir.actions.act_window">
+        <field name="name">Game Library</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">game.model</field>
+<!--        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>-->
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No games yet...
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="gamelib_root" name="Game Library" sequence="0"/>
+    <menuitem id="gamelib_mygames" name="My Games" parent="gamelib_root" action="action_main"/>
+</odoo>
