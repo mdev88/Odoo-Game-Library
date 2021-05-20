@@ -16,6 +16,25 @@
         </field>
     </record>
 
+    <record id="games_kanban" model="ir.ui.view">
+        <field name="name">game.model.kanban</field>
+        <field name="model">game.model</field>
+        <field name="arch" type="xml">
+            <kanban class="o_res_partner_kanban">
+                <field name="cover" />
+                <field name="name" />
+                <templates>
+                    <t t-name="kanban-box">
+                    <div style="width: 200px; height: 300;">
+                        <field name="cover" widget="image" width="200" height="280" />
+                        <p>Title: <field name="name"/></p>
+                    </div>
+                </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
     <!--  Form View  -->
     <record id="games_form" model="ir.ui.view">
         <field name="name">game.model.form</field>
@@ -43,7 +62,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">game.model</field>
 <!--        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>-->
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No games yet...
