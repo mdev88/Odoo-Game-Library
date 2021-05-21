@@ -8,28 +8,31 @@
         <field name="arch" type="xml">
             <tree string="Games Tree">
                 <field name="cover" widget="image" height="150" width="75"/>
-                <field name="name" />
-                <field name="genre" />
-                <field name="year" />
-                <field name="completed" />
+                <field name="name"/>
+                <field name="genre"/>
+                <field name="year"/>
+                <field name="completed"/>
             </tree>
         </field>
     </record>
 
+    <!--  Kanban View  -->
     <record id="games_kanban" model="ir.ui.view">
         <field name="name">game.model.kanban</field>
         <field name="model">game.model</field>
         <field name="arch" type="xml">
-            <kanban class="o_res_partner_kanban">
-                <field name="cover" />
-                <field name="name" />
+            <kanban>
+                <field name="cover"/>
+                <field name="name"/>
                 <templates>
                     <t t-name="kanban-box">
-                    <div style="width: 200px; height: 300;">
-                        <field name="cover" widget="image" width="200" height="280" />
-                        <p>Title: <field name="name"/></p>
-                    </div>
-                </t>
+                        <div t-attf-class="oe_kanban_content oe_kanban_global_click o_kanban_get_form"
+                             style="width: 200px; height: 300;">
+                            <field name="cover" widget="image" width="200" height="250"/>
+                            <div><strong><field name="name"/></strong></div>
+                        </div>
+
+                    </t>
                 </templates>
             </kanban>
         </field>
@@ -43,13 +46,15 @@
             <form string="Games Form">
                 <sheet>
                     <group>
-                        <group><field name="name" /></group>
-                        <group><field name="cover" /></group>
-                    </group>
-                    <group>
-                        <field name="year" />
-                        <field name="genre" />
-                        <field name="completed" />
+                        <field name="cover" nolabel="1" widget="image" width="200" height="250"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="year"/>
+                        </group>
+                        <group>
+                            <field name="genre"/>
+                            <field name="completed"/>
+                        </group>
                     </group>
                 </sheet>
             </form>
@@ -61,7 +66,7 @@
         <field name="name">Game Library</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">game.model</field>
-<!--        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>-->
+        <!--        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>-->
         <field name="view_mode">kanban,tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

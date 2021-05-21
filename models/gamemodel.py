@@ -6,7 +6,7 @@ class GameModel(models.Model):
     _description = 'Game model'
 
     name = fields.Char(string='Title', required=True)
-    year = fields.Integer('Year')
+    year = fields.Char('Year', help='Release date')
     genre = fields.Selection([('action', 'Action'),
                               ('adventure', 'Adventure'),
                               ('fps', 'FPS'),
