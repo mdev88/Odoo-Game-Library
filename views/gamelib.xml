@@ -11,7 +11,7 @@
                 <field name="name"/>
                 <field name="genre"/>
                 <field name="year"/>
-                <field name="completed"/>
+                <field name="status"/>
             </tree>
         </field>
     </record>
