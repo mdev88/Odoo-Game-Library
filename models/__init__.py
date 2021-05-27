@@ -1,1 +1,1 @@
-from . import gamemodel
+from . import game

@@ -7,7 +7,7 @@
         <field name="model">game.model</field>
         <field name="arch" type="xml">
             <tree string="Games Tree">
-                <field name="cover" widget="image" height="150" width="75"/>
+                <field name="cover" widget="image" width="60" height="100"/>
                 <field name="name"/>
                 <field name="genre"/>
                 <field name="year"/>
@@ -22,16 +22,13 @@
         <field name="model">game.model</field>
         <field name="arch" type="xml">
             <kanban>
-                <field name="cover"/>
-                <field name="name"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_content oe_kanban_global_click o_kanban_get_form"
                              style="width: 200px; height: 300;">
-                            <field name="cover" widget="image" width="200" height="250"/>
+                            <field name="cover" widget="image" width="190" height="300"/>
                             <div><strong><field name="name"/></strong></div>
                         </div>
-
                     </t>
                 </templates>
             </kanban>
@@ -46,12 +43,13 @@
             <form string="Games Form">
                 <sheet>
                     <group>
-                        <field name="cover" nolabel="1" widget="image" width="200" height="250"/>
+                        <div>
+                            <field name="cover" widget="image" nolabel="1" width="300" height="450" />
+                        </div>
                         <group>
                             <field name="name"/>
                             <field name="year"/>
-                        </group>
-                        <group>
+                            <field name="wikipedia" widget="url"/>
                             <field name="genre"/>
                             <field name="completed"/>
                         </group>
@@ -64,8 +62,8 @@
     <!-- Ection of the Menu Entry -->
     <record id="action_main" model="ir.actions.act_window">
         <field name="name">Game Library</field>
-        <field name="type">ir.actions.act_window</field>
         <field name="res_model">game.model</field>
+        <field name="type">ir.actions.act_window</field>
         <!--        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>-->
         <field name="view_mode">kanban,tree,form</field>
         <field name="help" type="html">
