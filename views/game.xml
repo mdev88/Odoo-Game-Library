@@ -27,6 +27,34 @@
         </field>
     </record>
 
+
+    <!--  Tags Tree View  -->
+    <record id="tags_tree" model="ir.ui.view">
+        <field name="name">game.tag.tree</field>
+        <field name="model">game.tag</field>
+        <field name="arch" type="xml">
+            <tree string="Tags Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--  Genre Form View  -->
+    <record id="tags_form" model="ir.ui.view">
+        <field name="name">game.tag.form</field>
+        <field name="model">game.tag</field>
+        <field name="arch" type="xml">
+            <form string="Tags Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
     <!--  Games Tree View  -->
     <record id="games_tree" model="ir.ui.view">
         <field name="name">game.model.tree</field>
@@ -36,6 +64,7 @@
                 <field name="cover" widget="image" width="60" height="100"/>
                 <field name="name"/>
                 <field name="genre"/>
+                <field name="tags" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 <field name="year"/>
                 <field name="status"/>
             </tree>
@@ -77,6 +106,7 @@
                             <field name="year"/>
                             <field name="wikipedia" widget="url"/>
                             <field name="genre"/>
+                            <field name="tags" widget="many2many_tags" options="{'color_field': 'color'}" />
                             <field name="completed"/>
                         </group>
                     </group>
@@ -98,6 +128,19 @@
         </field>
     </record>
 
+    <!-- Action of the Tags Entry -->
+    <record id="action_tags" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="res_model">game.tag</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No tags yet...
+            </p>
+        </field>
+    </record>
+
     <!-- Action of the Games Entry -->
     <record id="action_games" model="ir.actions.act_window">
         <field name="name">Game Library</field>
@@ -115,4 +158,5 @@
     <menuitem id="gamelib_root" name="Game Library" sequence="0"/>
     <menuitem id="gamelib_mygames" name="My Games" parent="gamelib_root" action="action_games"/>
     <menuitem id="gamelib_genres" name="Genres" parent="gamelib_root" action="action_genres"/>
+    <menuitem id="gamelib_tags" name="Tags" parent="gamelib_root" action="action_tags"/>
 </odoo>

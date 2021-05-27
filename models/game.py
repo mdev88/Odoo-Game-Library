@@ -24,7 +24,7 @@ class Game(models.Model):
     #                           ('strategy', 'Strategy'),
     #                           ('other', 'Other')])
     genre = fields.Many2one('game.genre', 'Genre')
-    # tags = fields.Many2many('game.tags', 'Tags')
+    tags = fields.Many2many('game.tag')
     completed = fields.Boolean('Completed')
     status = fields.Char('', compute='get_status')
     cover = fields.Binary('Cover')

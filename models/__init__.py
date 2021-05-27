@@ -1,1 +1,1 @@
-from . import game, genre
+from . import game, genre, tag
