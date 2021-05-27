@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <!--  Tree View  -->
+    <!--  Genre Tree View  -->
+    <record id="genre_tree" model="ir.ui.view">
+        <field name="name">game.genre.tree</field>
+        <field name="model">game.genre</field>
+        <field name="arch" type="xml">
+            <tree string="Genre Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--  Genre Form View  -->
+    <record id="genre_form" model="ir.ui.view">
+        <field name="name">game.genre.form</field>
+        <field name="model">game.genre</field>
+        <field name="arch" type="xml">
+            <form string="Genre Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--  Games Tree View  -->
     <record id="games_tree" model="ir.ui.view">
         <field name="name">game.model.tree</field>
         <field name="model">game.model</field>
@@ -16,7 +42,7 @@
         </field>
     </record>
 
-    <!--  Kanban View  -->
+    <!--  Games Kanban View  -->
     <record id="games_kanban" model="ir.ui.view">
         <field name="name">game.model.kanban</field>
         <field name="model">game.model</field>
@@ -35,7 +61,7 @@
         </field>
     </record>
 
-    <!--  Form View  -->
+    <!--  Games Form View  -->
     <record id="games_form" model="ir.ui.view">
         <field name="name">game.model.form</field>
         <field name="model">game.model</field>
@@ -44,7 +70,7 @@
                 <sheet>
                     <group>
                         <div>
-                            <field name="cover" widget="image" nolabel="1" width="300" height="450" />
+                            <field name="cover" widget="image" nolabel="1" width="300" height="450"/>
                         </div>
                         <group>
                             <field name="name"/>
@@ -59,8 +85,21 @@
         </field>
     </record>
 
-    <!-- Ection of the Menu Entry -->
-    <record id="action_main" model="ir.actions.act_window">
+    <!-- Action of the Genres Entry -->
+    <record id="action_genres" model="ir.actions.act_window">
+        <field name="name">Genres</field>
+        <field name="res_model">game.genre</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No genres yet...
+            </p>
+        </field>
+    </record>
+
+    <!-- Action of the Games Entry -->
+    <record id="action_games" model="ir.actions.act_window">
         <field name="name">Game Library</field>
         <field name="res_model">game.model</field>
         <field name="type">ir.actions.act_window</field>
@@ -74,5 +113,6 @@
     </record>
 
     <menuitem id="gamelib_root" name="Game Library" sequence="0"/>
-    <menuitem id="gamelib_mygames" name="My Games" parent="gamelib_root" action="action_main"/>
+    <menuitem id="gamelib_mygames" name="My Games" parent="gamelib_root" action="action_games"/>
+    <menuitem id="gamelib_genres" name="Genres" parent="gamelib_root" action="action_genres"/>
 </odoo>

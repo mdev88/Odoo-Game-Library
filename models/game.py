@@ -16,13 +16,15 @@ class Game(models.Model):
 
     name = fields.Char('Title', required=True)
     year = fields.Char('Year', help='Release date')
-    genre = fields.Selection([('action', 'Action'),
-                              ('adventure', 'Adventure'),
-                              ('fps', 'FPS'),
-                              ('horror', 'Horror'),
-                              ('simulation', 'Simulation'),
-                              ('strategy', 'Strategy'),
-                              ('other', 'Other')])
+    # genre = fields.Selection([('action', 'Action'),
+    #                           ('adventure', 'Adventure'),
+    #                           ('fps', 'FPS'),
+    #                           ('horror', 'Horror'),
+    #                           ('simulation', 'Simulation'),
+    #                           ('strategy', 'Strategy'),
+    #                           ('other', 'Other')])
+    genre = fields.Many2one('game.genre', 'Genre')
+    # tags = fields.Many2many('game.tags', 'Tags')
     completed = fields.Boolean('Completed')
     status = fields.Char('', compute='get_status')
     cover = fields.Binary('Cover')
