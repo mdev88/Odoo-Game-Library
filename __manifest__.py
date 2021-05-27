@@ -13,7 +13,7 @@
     # data files always loaded at installation
     'data': [
         'security/ir.model.access.csv',
-        'views/gamelib.xml',
+        'views/game.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
