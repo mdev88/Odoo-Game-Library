@@ -46,5 +46,5 @@ class Game(models.Model):
     completed = fields.Boolean('Completed')
     status = fields.Char('Status', compute='get_status')
     wikipedia = fields.Char('Wikipedia')
-    cover = fields.Binary('Cover', compute='_compute_image', store=True, attachment=False)
+    cover = fields.Binary('Cover', compute='_compute_image', attachment=False)
     cover_url = fields.Char('Cover URL')
