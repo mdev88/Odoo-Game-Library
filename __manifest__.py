@@ -19,4 +19,7 @@
     'demo': [
         # 'demo/testdemo_data.xml',
     ],
+    'external_dependencies': {
+       'python': ['rawgpy'],
+    }
 }

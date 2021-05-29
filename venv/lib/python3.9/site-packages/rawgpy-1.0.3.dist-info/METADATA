@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: rawgpy
+Version: 1.0.3
+Summary: RAWG.io python api wrapper
+Home-page: https://gitlab.com/laundmo/rawg-python-wrapper
+Author: laundmo
+Author-email: laurinschmidt2001@gmail.com
+License: GPLv3
+Project-URL: Documentation, https://rawgpy.readthedocs.io/en/latest/quickstart.html
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+
+# RAWGpy quickstart
+
+The RAWGpy RAWG.io API wrapper uses the rawgpy.rawg.RAWG as a main class that the users accesses.
+
+You can use the RAWGpy wrapper with or without authenticating.
+
+```
+import rawgpy
+
+rawg = rawgpy.RAWG("User-Agent, this should identify your app")
+results = rawg.search("Warframe")  # defaults to returning the top 5 results
+game = results[0]
+game.populate()  # get additional info for the game
+
+print(game.name)
+
+print(game.description)
+
+for store in game.stores:
+    print(store.url)
+
+rawg.login("someemail@example.com", "somepassword")
+
+me = rawg.current_user()
+
+print(me.name) # print my name, equivalent to print(self.username)
+
+me.populate() # gets additional info for the user
+
+for game in me.playing:
+    print(game.name) # prints all the games i'm currently playing
+```
+
+
