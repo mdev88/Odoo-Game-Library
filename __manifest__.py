@@ -20,6 +20,6 @@
         # 'demo/testdemo_data.xml',
     ],
     'external_dependencies': {
-       'python': ['rawgpy'],
+       # 'python': ['rawgpy'],
     }
 }
